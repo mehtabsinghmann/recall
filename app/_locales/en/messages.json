@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "recall",
+    "description": "Finding needle in a haystack"
+  },
+  "appDescription": {
+    "message": "Local Search using lunr",
+    "description": "Local personalized search based on history"
+  }
+}
