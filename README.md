@@ -1,5 +1,5 @@
 # Steps to build
-1. Install nodejs. Install grunt globally ( ` sudo npm install -g grunt-cli` )
+1. Install nodejs. Install grunt globally ( `sudo npm install -g grunt-cli` )
 2. From the root folder, run `npm install` and then `grunt build`
 3. Files will be generated in the `dist` folder, and the packaged extension in the packages folder.
 
