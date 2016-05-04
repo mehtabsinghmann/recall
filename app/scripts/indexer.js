@@ -1,6 +1,6 @@
-var tags = Immutable.Seq.of('h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'a', 'strong', 'b','title');
+var tags = Immutable.Seq.of('h1', 'h2', 'strong', 'b','title');
 
-var $tags = tags
+var common_tags = tags
   .flatMap(function (tag) {
     return Array.prototype.slice.call(document.querySelectorAll(tag));
   }).flatMap(function ($el) {
@@ -11,20 +11,7 @@ var $tags = tags
   }).filter (function (word) {
     return (word.length > 3);
   }).toArray();
-
-var linkWords = Immutable.Seq.of('a')
-  .flatMap(function (tag) {
-    return Array.prototype.slice.call(document.querySelectorAll(tag));
-  }).flatMap(function ($el) {
-    return $el.href
-      .replace(/\//g, '+')
-      .replace('.', '+')
-      .split('+');
-  }).filter(function (word) {
-    return word.length > 2;
-  })
-  .toArray();
-
+  
 var meta_tags = Immutable.Seq.of('meta')
   .flatMap(function (tag) {
     return Array.prototype.slice.call(document.querySelectorAll(tag));
@@ -43,6 +30,6 @@ var meta_tags = Immutable.Seq.of('meta')
   }).toArray();
 
 
-chrome.runtime.sendMessage({type: "newLoad", data: ($tags.concat(linkWords).concat(meta_tags)).join(' ')}, function(response) {
+chrome.runtime.sendMessage({type: "newLoad", data: (common_tags.concat(meta_tags)).join(' ')}, function(response) {
   console.log(response);
 });

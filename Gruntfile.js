@@ -22,7 +22,7 @@ module.exports = function (grunt) {
       styles: {
         files: ['<%= config.app %>/styles/{,*/}*.css'],
         tasks: ['cssmin'],
-        options: {
+        options: {  
           livereload: true
         }
       },
@@ -100,8 +100,7 @@ module.exports = function (grunt) {
         dest: '<%= config.dist %>'
       },
       html: [
-        '<%= config.app %>/popup.html',
-        '<%= config.app %>/options.html'
+        '<%= config.app %>/recall-home.html',
       ]
     },
     usemin: {
@@ -175,7 +174,7 @@ module.exports = function (grunt) {
         options: {
           buildnumber: true,
           background: {
-            target: 'scripts/background.js',
+            target: 'scripts/app.js',
             exclude: [
               'scripts/chromereload.js'
             ]

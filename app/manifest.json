@@ -1,26 +1,27 @@
 {
     "name": "__MSG_appName__",
-    "version": "1.0.1",
+    "version": "1.0.7",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
     "default_locale": "en",
     "background": {
         "scripts": [
             "scripts/lunr.js",
-            "scripts/background.js"
+            "scripts/app.js"
         ],
         "persistent": true
     },
     "browser_action": {
-        "default_title": "recall",
-        "default_popup": "popup.html"
+        "default_title": "Recall",
+        "default_popup": "recall-home.html"
     },
     "content_scripts": [
         {
             "all_frames": false,
             "js": [
                 "scripts/immutable.js",
-                "scripts/indexer.js"
+                "scripts/indexer.js",
+                "scripts/recall-home.js"
             ],
             "matches": [
                 "<all_urls>"
