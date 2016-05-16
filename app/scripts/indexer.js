@@ -1,6 +1,6 @@
-var tags = Immutable.Seq.of('h1', 'h2', 'strong', 'b','title');
+var corpus_tags = Immutable.Seq.of('h1', 'h2', 'strong', 'b','title');
 
-var common_tags = tags
+var common_tags = corpus_tags
   .flatMap(function (tag) {
     return Array.prototype.slice.call(document.querySelectorAll(tag));
   }).flatMap(function ($el) {

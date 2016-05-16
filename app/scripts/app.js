@@ -1,29 +1,29 @@
 'use strict';
-var index = localStorage["index"];
-if(!index) {
-  var index = lunr(function () {
+var recall_index = localStorage["recall_index"];
+if(!recall_index) {
+  var recall_index = lunr(function () {
     this.field('body');
     this.ref('id');
   });
-  localStorage["index"] = JSON.stringify(index.toJSON());
+  localStorage["recall_index"] = JSON.stringify(recall_index.toJSON());
 } else {
-  index = lunr.Index.load(JSON.parse(index));
+  recall_index = lunr.Index.load(JSON.parse(recall_index));
 }
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.type == "newLoad") {
-      sendResponse({message: sender.tab.url, index: index});
-      index.add({
+      sendResponse({message: sender.tab.url, recall_index: recall_index});
+      recall_index.add({
         id: sender.tab.url,
         body: request.data
       });
-      localStorage["index"] = JSON.stringify(index.toJSON());
+      localStorage["recall_index"] = JSON.stringify(recall_index.toJSON());
     }
   });
 
 chrome.omnibox.onInputChanged.addListener(function (text, suggest) {
-  var suggestions = index.search(text);
+  var suggestions = recall_index.search(text);
   suggest(suggestions.map(function (el) {
       return {
         content: el.ref,

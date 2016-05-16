@@ -1,3 +1,3 @@
 'use strict';
 
-document.write(localStorage["index"]);
+document.write(localStorage["recall_index"]);
