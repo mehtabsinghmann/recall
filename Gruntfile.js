@@ -210,8 +210,7 @@ module.exports = function (grunt) {
     ]);
   });
   grunt.registerTask('test', [
-    'connect:test',
-    'mocha'
+    'connect:test'
   ]);
   grunt.registerTask('build', [
     'clean:dist',
