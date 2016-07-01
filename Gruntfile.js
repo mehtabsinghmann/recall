@@ -10,7 +10,7 @@ module.exports = function (grunt) {
     config: config,
     watch: {
       js: {
-        files: ['<%= config.app %>/scripts/{,*/}*.js'],
+        files: ['<%= config.app %>/js/{,*/}*.js'],
         tasks: ['jshint'],
         options: {
           livereload: true
@@ -20,7 +20,7 @@ module.exports = function (grunt) {
         files: ['Gruntfile.js']
       },
       styles: {
-        files: ['<%= config.app %>/styles/{,*/}*.css'],
+        files: ['<%= config.app %>/css/{,*/}*.css'],
         tasks: ['cssmin'],
         options: {  
           livereload: true
@@ -33,6 +33,7 @@ module.exports = function (grunt) {
         files: [
           '<%= config.app %>/*.html',
           '<%= config.app %>/icons/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+	  '<%= config.app %>/fonts/{,*/}*.{eot,svg,ttf,woff,woff2}',
           '<%= config.app %>/manifest.json',
           '<%= config.app %>/_locales/{,*/}*.json'
         ]
@@ -82,8 +83,8 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= config.app %>/scripts/{,*/}*.js',
-        '!<%= config.app %>/scripts/vendor/*',
+        '<%= config.app %>/js/{,*/}*.js',
+        '!<%= config.app %>/js/vendor/*',
         'test/spec/{,*/}*.js'
       ]
     },
@@ -92,7 +93,7 @@ module.exports = function (grunt) {
         dest: '<%= config.dist %>'
       },
       html: [
-        '<%= config.app %>/recall-home.html',
+        '<%= config.app %>/index.html',
       ]
     },
     usemin: {
@@ -100,7 +101,7 @@ module.exports = function (grunt) {
         assetsDirs: ['<%= config.dist %>', '<%= config.dist %>/images']
       },
       html: ['<%= config.dist %>/{,*/}*.html'],
-      css: ['<%= config.dist %>/styles/{,*/}*.css']
+      css: ['<%= config.dist %>/css/{,*/}*.css']
     },
     imagemin: {
       dist: {
@@ -145,8 +146,8 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             'icons/{,*/}*.{webp,gif,png}',
             '{,*/}*.html',
-            'styles/{,*/}*.css',
-            'styles/fonts/{,*/}*.*',
+            'css/{,*/}*.css',
+            'fonts/{,*/}*.*',
             '_locales/{,*/}*.json',
           ]
         }]
@@ -166,10 +167,7 @@ module.exports = function (grunt) {
         options: {
           buildnumber: true,
           background: {
-            target: 'scripts/app.js',
-            exclude: [
-              'scripts/chromereload.js'
-            ]
+            target: 'js/app.js'
           }
         },
         src: '<%= config.app %>',
