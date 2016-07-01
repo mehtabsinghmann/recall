@@ -6,22 +6,22 @@
     "default_locale": "en",
     "background": {
         "scripts": [
-            "scripts/lunr.js",
-            "scripts/app.js"
+            "js/lunr.js",
+            "js/app.js"
         ],
         "persistent": true
     },
     "browser_action": {
         "default_title": "Recall",
-        "default_popup": "recall-home.html"
+        "default_popup": "index.html"
     },
     "content_scripts": [
         {
             "all_frames": false,
             "js": [
-                "scripts/immutable.js",
-                "scripts/indexer.js",
-                "scripts/recall-home.js"
+                "js/immutable.js",
+                "js/indexer.js",
+                "js/index.js"
             ],
             "matches": [
                 "<all_urls>"
