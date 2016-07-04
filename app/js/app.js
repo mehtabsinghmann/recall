@@ -1,9 +1,12 @@
 'use strict';
-var recall_index = localStorage["recall_index"];
-if(!recall_index) {
-  var recall_index = lunr(function () {
-    this.field('body');
-    this.ref('id');
+var localIndex;
+var lunrIndex = lunr(function(){
+ this.field('body');
+ this.ref('id');
+});
+chrome.storage.sync.get("com.mehtabsinghmann.recall",function(object items){
+ localIndex = items["index"];
+});
   });
   localStorage["recall_index"] = JSON.stringify(recall_index.toJSON());
 } else {
