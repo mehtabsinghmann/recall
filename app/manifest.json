@@ -1,13 +1,13 @@
 {
     "name": "__MSG_appName__",
-    "version": "1.0.0",
+    "version": "0.0.1",
     "manifest_version": 2,
     "description": "__MSG_appDescription__",
     "default_locale": "en",
     "background": {
         "scripts": [
-            "js/lunr.js",
-            "js/app.js"
+            "js/elasticlunr.min.js",
+            "js/background.js"
         ],
         "persistent": true
     },
@@ -20,8 +20,7 @@
             "all_frames": false,
             "js": [
                 "js/immutable.js",
-                "js/indexer.js",
-                "js/index.js"
+                "js/content.js"
             ],
             "matches": [
                 "<all_urls>"
